@@ -219,17 +219,22 @@ class User {
         if (!isContactExist) {
             return "Contact Does not Exists"
         }
-        return this.contacts[indexOfContact].getContactInfo()
+        return this.contacts[indexOfContact].contactInfos
     }
 
     updateContactInfo(contactID, contactInfoID, typeOfContactInfo, valueOfContactInfo) {
+        if(this.isAdmin){
+            return "Admin does not have contact info"
+        }
         let [indexOfContact, isContactExist] = this.findContact(contactID)
         if (!isContactExist) {
             return "Contact Does Not Exist"
         }
 
-        return this.contacts[indexOfContact].updateContactInfo(contactInfoID, typeOfContactInfo, valueOfContactInfo)
+        let info = this.contacts[indexOfContact].updateContactInfo(contactInfoID, typeOfContactInfo, valueOfContactInfo)
+        return info
     }
+
 
     deleteContactInfo(contactID, contactInfoID) {
         if (this.isAdmin) {
@@ -240,7 +245,7 @@ class User {
         if (!isContactExist) {
             return "Contact Does not Exist"
         }
-        return this.contacts[indexOfContact].deleteContact(contactInfoID)
+        return this.contacts[indexOfContact].deleteContactInfo(contactInfoID)
 
     }
 
@@ -310,15 +315,15 @@ console.log("All Users : ", user1.getAllContact());
 
 console.log("--------------------------------------------------------------------------------------------");
 
-console.log("Index 1 Info",user1.createContactInfo("1","name","Siddhant"));
-console.log("Index 1 Info",user1.createContactInfo("1","number","9769252978"));
-console.log("Index 1 Info",user1.createContactInfo("1","role","ddveloper"));
+console.log("Index 1 Info",user1.createContactInfo(1,"name","Siddhant"));
+console.log("Index 1 Info",user1.createContactInfo(1,"number","9769252978"));
+console.log("Index 1 Info",user1.createContactInfo(1,"role","ddveloper"));
 
-// console.log("All Info : ",user1.getContactInfo(1,0));
-// console.log(user1.updateContactInfo(1,0,"infoValue","Sid"));
+console.log("All Info : ",user1.getContactInfo(1));
+// console.log(user1.updateContactInfo(0,1,"typeOfContactInfo","Sid"));
+console.log(user1.updateContactInfo(1,0,"valueOfContactInfo","Sid"));
+console.log("Deleted",user1.deleteContactInfo(1,0));
+console.log("all info:",user1.getContactInfo(1));
 
-// console.log("Deleted",user1.deleteContactInfo(1,0));
-// console.log("all info:",user1.getContactInfo(1));
-
-// console.log("INfo by ID",user1.getContactInfoById(1,2));
+console.log("INfo by ID",user1.getContactInfoById(1,2));
 
