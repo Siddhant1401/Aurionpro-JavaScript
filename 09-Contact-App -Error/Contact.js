@@ -51,7 +51,7 @@ class Contact {
 
             for (let index = 0; index < this.contactInfos.length; index++) {
                 if (this.contactInfos[index].ID == contactInfoID) {
-                    return [index, true]
+                    return index
                 }
             }
             throw new NotFoundError("Contact Info Not Found")
