@@ -1,13 +1,13 @@
 class ContactInfo {
-    static ContactInfoID = 0
+    static contactInfoID = 0
     
     constructor(typeOfContactInfo, valueOfContactInfo) {
-        this.ID = ContactInfo.ContactInfoID++
+        this.ID = ContactInfo.contactInfoID++
         this.typeOfContactInfo = typeOfContactInfo
         this.valueOfContactInfo = valueOfContactInfo
     }
 
-    upateContactInfo(parameter, newValue) {
+    updateContactInfo(parameter, newValue) {
         switch (parameter) {
             case "typeOfContactInfo":
                 if (typeof newValue != "string") {

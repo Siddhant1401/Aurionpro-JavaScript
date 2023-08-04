@@ -36,7 +36,7 @@ class Contact {
     }
 
     findContactInfo(contactInfoID) {
-        for (let index = 0; index < this.contactInfo.length; index++) {
+        for (let index = 0; index < this.contactInfos.length; index++) {
             if (this.contactInfos[index].ID == contactInfoID) {
                 return [index, true]
             }
@@ -49,7 +49,8 @@ class Contact {
         if (!isContactExist) {
             return "Contact Does Not Exist"
         }
-        return this.contactInfos[indexOfContact].updateContactInfo(parameter, newValue)
+        let info = this.contactInfos[indexOfContact].updateContactInfo(parameter, newValue)
+        return info
     }
 
     deleteContactInfo(contactInfoID){
@@ -57,11 +58,11 @@ class Contact {
         if(!isContactExist){
             return "Contact Does Not Exist"
         }
-        this.contactInfos[indexOfContact].splice(indexOfContact,1)
-        return Contact.contactInfos
+        let info = this.contactInfos.splice(indexOfContact,1)
+        return info
     }
 
-    getContactInfoByID(contactInfoID){
+    getContactInfoById(contactInfoID){
         let [indexOfContact,isContactExist] = this.findContactInfo(contactInfoID)
         if(!isContactExist){
             return "Contact Does not Exist"
