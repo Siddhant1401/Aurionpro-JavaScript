@@ -269,7 +269,7 @@ class User {
         try {
 
             if (this.isAdmin) { throw new ValidationError("Not Accessible to Admin") }
-            let [indexOfContact, isContactExist] = this.#findContact(contactID)
+            let indexOfContact = this.#findContact(contactID)
             return this.contacts[indexOfContact].contactInfos
 
         }
